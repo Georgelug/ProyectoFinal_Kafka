@@ -14,7 +14,7 @@ brokers = [ Broker(active_status=True, broker_id=1), Broker(active_status=True, 
 
 class ProducerForm(FlaskForm):
     topic = StringField(name = "Topic")
-    message = StringField(name ="Mensaje")
+    message = TextAreaField(name ="Mensaje")
     submitButton = SubmitField("Enviar mensaje")
 
 
@@ -22,13 +22,15 @@ class ProducerForm(FlaskForm):
 def home():
     return render_template('index.html')
 
-@app.route('/Producer1')
+@app.route('/Producer1', methods=['GET', 'POST'])
 def producer1():
     message = ProducerForm()
-    print( message.message)
     context ={
         'messageForm': message
     }
+
+
+
     return render_template('producer.html', **context)
 
 if __name__ == '__main__':

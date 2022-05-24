@@ -2,6 +2,9 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
+<form>
     {{ messageForm.topic(size=30, maxlength=50) }}
-    {{ messageForm.message(size=50, maxlength=250) }}
+    {{ messageForm.message(rows="10", cols="50", wrap=hard, spellcheck=true, required=true, maxlength=450) }}
+    {{ messageForm.submitButton}}
+</form>
 {% endblock %}
