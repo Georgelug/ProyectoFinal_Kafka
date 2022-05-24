@@ -1,36 +1,36 @@
 # Broker
 class Broker:
-    def __init__(self, active_status=False,broker_id = 0):
+    def __init__(self, active_status=False, broker_id = 0):
         self.topics = {}
         self.broker_id = broker_id
         self.active_status = active_status
     
     # setters and getters
-    def getActiveStatus(self):
-        return self.active_status
-    def setActiveStatus(self, status):
+    # del lado del cosumer
+    def getActiveStatus(self): # obtiene el status del broker, ocupado o desocupado, esta funcion es para el consumer
+        return self.active_status 
+    def setActiveStatus(self, status): # cambia el status del broker, ocupado o desocupado, esta funcion es para el consumer
         self.active_status = status
-    def getBrokerId(self):
+    def getBrokerId(self): # obtienes el id del broker, solo hay 1 y 2
         return self.broker_id
-    def setBrokerId(self, broker_id):
-        return self.broker_id
-    def getTopics(self):
+    def getTopics(self): # funcion que devuelve el diccionario de topics, IMPORTANTE 
         return self.topics
-    def setTopics(self, topics):
+    def getTopic_toClient(self,key):  # funcion que muestra los mensajes de un topic
+        return self.getTopics()[key]
+    def getMessage(self,key,indexMessage = 0): # funcion que obtiene el string o mensaje que el usuario o consumer elige
+        return self.getTopics()[key][indexMessage]
+    
+    # carga inicial (opcional)
+    def setTopics(self, topics): # funcion que modifica el diccionario, esta servira para realizar cargas iniciales
         self.topics = topics
     
-    # other methods
-    def getTopic(self,key):
-        return self.getTopics()[key]
-    def getMessage(self,key,indexMessage = 0):
-        return self.getTopics()[key][indexMessage]
-    def deleteMessage(self,key,indexMessage):
-        self.topics[key].pop(indexMessage)
-    def setMessage(self,key,indexMessage,message):
-        self.topics[key][indexMessage] = message
-    def addNewMessage(self, key, message):
-        self.topics[key].append(message)
-        
+    # del lado del producer
+    def addNewMessage(self, topic, message): # funcion que agrega un nuevo mensaje desde el producer, recibe un topico y un mensaje, en caso de que no exista el topico, entonces se crea la llave del diccionario y el mensaje  
+        try:
+            self.topics[topic].append(message)
+        except:
+            self.topics[topic] = [message]
+            
 # Client
 class Client:
     def __init__(self,client_id = 0):
@@ -94,4 +94,6 @@ class Consumer(Client):
         return self.listOfBrokers[self.broker_id].getTopic(key)
     def consume(self,key,indexMessage):
         self.setMessage(self.listOfBrokers[self.broker_id].getMessage(key,indexMessage))
+        
+        
     
