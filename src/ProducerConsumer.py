@@ -96,4 +96,5 @@ class Consumer(Client):
         self.setMessage(self.listOfBrokers[self.broker_id].getMessage(key,indexMessage))
         
         
-    
+        
+
