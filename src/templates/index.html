@@ -1,0 +1,25 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block style %}
+    
+{% endblock %}
+
+{% block head %}
+    {{super()}}
+    <title>Sistemas distribuidos Proyecto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+{% endblock %}
+
+{% block body %}
+    {%block header%}
+        {% include "header.html"%}
+    {% endblock %}
+
+    {% block navbar %}
+        {% include 'navbar.html'%}
+    {% endblock %}
+
+    {% block content%}
+    {% endblock %}
+
+{% endblock %}
