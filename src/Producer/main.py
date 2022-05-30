@@ -4,7 +4,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import SubmitField, TextAreaField, StringField
 
-from modules.ProducerConsumer import Broker
+from tools.ProducerConsumer import Broker
 
 app = Flask(__name__, static_folder='static')
 bootstrap = Bootstrap(app)
