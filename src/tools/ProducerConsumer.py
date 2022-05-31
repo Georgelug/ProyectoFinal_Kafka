@@ -65,8 +65,7 @@ class Producer(Client):
     
 class Consumer(Client):
     def __init__(self,client_id = 0,consuming_status = False, topic_id = 1, broker_id = 1):
-        super().__init__(self,client_id)
-        self.listOfBrokers = {1: Broker(broker_id = 1), 2: Broker(broker_id = 2)}
+        super().__init__()
         self.consuming_status = consuming_status
         self.topic_id = topic_id
         self.broker_id = broker_id
