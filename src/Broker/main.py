@@ -4,16 +4,14 @@
 #   Expects b"Hello" from client, replies with b"World"
 #
 
-import time
 import zmq
 import sys
-from flask import jsonify
 sys.path.insert(0,'C:/Users/PC/Desktop/8voSemestre/Sistemas distribuidos/ProyectoFinal_Kafka\src/tools')
 from ProducerConsumer import *
 
 brokers = {
         1:Broker(broker_id = 1),
-        2:Broker(broker_id = 1)
+        2:Broker(broker_id = 2)
     }
 initialCharge = {
     'Hola mundo': ['mensaje 1','mensaje 2', 'mensaje 3'],
@@ -68,6 +66,7 @@ if __name__ == '__main__':
         brokers[1].setActiveStatus(False)
         brokers[2].setActiveStatus(False)
         # modo con carga inicial, se salta la ejecucion del publisher y solo se ejecuta el consumer
+        loadInitialCharge = False
         if loadInitialCharge:
             # se le da la carga inicial tanto al broker uno como al dos
             brokers[1].setTopics(initialCharge)

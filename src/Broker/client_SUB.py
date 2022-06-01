@@ -7,7 +7,6 @@
 import zmq
 import sys
 from time import sleep
-from flask import jsonify
 from random import seed
 from random import randint
 sys.path.insert(0,'C:/Users/PC/Desktop/8voSemestre/Sistemas distribuidos/ProyectoFinal_Kafka\src/tools')
@@ -16,7 +15,7 @@ seed(1)
 context = zmq.Context()
 consumer = Consumer()
 #  Socket to talk to server
-print("Connecting to hello world server…")
+print("Connecting to Consumer client...")
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://127.0.0.1:5555")
 

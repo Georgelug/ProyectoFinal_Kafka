@@ -21,8 +21,8 @@ socket.connect("tcp://127.0.0.1:5555")
 
 
 sleep(1)
-socket.send_pyobj({'mode':'publish','message':('hello world','message 1')})
-message = socket.recv_string()
+socket.send_pyobj({'mode':'publish','message':('hello world','message 1')}) # se manda un diccionario donde se tiene el modo publish y el topic junto con un mensaje
+message = socket.recv_string() # se recibe la notificacion de recibido
 print(message)
 sleep(1)
 socket.send_pyobj({'mode':'publish','message':('hello world','message 2')})
