@@ -4,6 +4,7 @@
 #   Expects b"Hello" from client, replies with b"World"
 #
 
+from ast import Try
 import zmq
 import sys
 sys.path.insert(0,'C:/Users/PC/Desktop/8voSemestre/Sistemas distribuidos/ProyectoFinal_Kafka\src/tools')
@@ -56,8 +57,12 @@ def SUB():
     brokers[BrokerIdSelected].setActiveStatus(message[1]) # se activa el broker elegido
     socket.send_pyobj(brokers[BrokerIdSelected].getTopics()) # se envia como respuesta los topicos del broker seleccionado
 
-# variable que indica si se recibe o no algun valor, en caso de que si se recibe algo entonces se inicializa con una carga inicial de topicos en los brokers con la finalidad de no ejecutar el cliente publisher e directo con la ejecucion del cliente consumer
-loadInitialCharge = True if sys.argv != None else False 
+# variable que indica si se recibe o no algun valor, en caso de que si se recibe algo entonces se inicializa con una carga inicial de topicos en los brokers con la finalidad de no ejecutar el cliente publisher e directo con la ejecucion del cliente consumer 
+try:
+    a = sys.argv[1]
+    loadInitialCharge = True 
+except:
+    loadInitialCharge = False 
 
 if __name__ == '__main__':
     while True:
@@ -66,7 +71,6 @@ if __name__ == '__main__':
         brokers[1].setActiveStatus(False)
         brokers[2].setActiveStatus(False)
         # modo con carga inicial, se salta la ejecucion del publisher y solo se ejecuta el consumer
-        loadInitialCharge = False
         if loadInitialCharge:
             # se le da la carga inicial tanto al broker uno como al dos
             brokers[1].setTopics(initialCharge)
@@ -83,7 +87,7 @@ if __name__ == '__main__':
             message = socket.recv_pyobj() # se recibe el mismo diccionario pero ahora se acepta ya sea publish o consume, en caso contrario no se podra comunicar con ningun cliente
             if(message['mode']=='publish'): # si se recibe un publish, entonces se manda a llamar la funcion que nos permite recibir info. del cliente publisher
                 PUB(message)
-            elif(message['mode']=='consume'): # si se recibe un consume, entonces se manda a llamar la funcio que nos permite mandar info. al cliente consumer
+            elif(message['mode']=='consume'): # si se recibe un consume, entonces se manda a llamar la funcion que nos permite mandar info. al cliente consumer
                 SUB()
             else:
                 print("Error, wrong mode")
