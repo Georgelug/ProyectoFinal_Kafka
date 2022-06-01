@@ -1,0 +1,82 @@
+header{
+    background-color: #f07671;
+    justify-content: center;
+    padding: 2%;
+    border-bottom: 5px solid #dadada;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1vw;
+    text-align: center;
+    
+
+}
+body {
+    background-color: #f3dc90;
+  }
+
+.form-container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #f3dc90;
+  }
+
+.message-topic {
+    margin-top: 10px;
+    order: 1;
+    align-self: center;
+    font-size: large;
+    font-weight: bold;
+}
+.topic-text{
+    border-radius: 12px;
+    border: 0cm;
+    padding: 10px 75px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.message-content {
+    order: 2;
+    align-self: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+.message-text{
+    border-radius: 12px;
+    border: 0cm;
+    padding: 10px 10px;
+    
+    text-align: center;
+}
+
+.message-button {
+    order: 3;
+
+    align-self: center;
+}
+
+.submitButton{
+    width: 100%;
+    border-radius: 12px;
+    padding: 10px 240px;
+    background-color: #a6f196;
+    color: black;
+    border: 0px;
+    transition-duration: 0.4s;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.submitButton:hover{
+    background-color: #209b05;
+    color: white;
+    
+}
