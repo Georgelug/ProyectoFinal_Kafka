@@ -29,7 +29,7 @@ class ProducerForm(FlaskForm):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('producer.html')
 
 @app.route('/Producer', methods=['GET', 'POST'])
 def producer():
@@ -39,9 +39,9 @@ def producer():
     }
     
     if messageForm.validate_on_submit:
-        #socket.send_pyobj({'mode':'publish','message':(messageForm.topic.data,messageForm.message.data)}) # se manda un diccionario donde se tiene el modo publish y el topic junto con un mensaje
-        #messageBroker = socket.recv_string() # se recibe la notificacion de recibido
-        #print(messageBroker)
+        socket.send_pyobj({'mode':'publish','message':(messageForm.topic.data,messageForm.message.data)}) # se manda un diccionario donde se tiene el modo publish y el topic junto con un mensaje
+        messageBroker = socket.recv_string() # se recibe la notificacion de recibido
+        print(messageBroker)
         sleep(1)
         messageForm.topic.data = ""
         messageForm.message.data = ""
