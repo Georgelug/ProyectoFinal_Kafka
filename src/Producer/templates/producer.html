@@ -1,0 +1,14 @@
+{% extends 'index.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+
+    <form class="form-container" action="{{url_for('producer')}}" method="POST">
+        <div class="message-topic">Topic: {{ messageForm.topic(class="topic-text",size=30, maxlength=50,data="") }}</div>
+        <div class="message-content">Message:<br>{{ messageForm.message(class="message-text",rows="10", cols="75", wrap=hard, spellcheck=true, required=true, maxlength=750) }}</div>
+        <div class="message-button"> {{ messageForm.submitButton(class = "submitButton")}}</div>
+   
+    </form>
+
+
+{% endblock %}

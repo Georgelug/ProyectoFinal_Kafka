@@ -9,8 +9,8 @@ class Broker:
     # del lado del cosumer
     def getActiveStatus(self): # obtiene el status del broker, ocupado o desocupado, esta funcion es para el consumer
         return self.active_status 
-    def setActiveStatus(self, status): # cambia el status del broker, ocupado o desocupado, esta funcion es para el consumer
-        self.active_status = status
+    def setActiveStatus(self,active_status = True): # cambia el status del broker, ocupado o desocupado, esta funcion es para el consumer
+        self.active_status = active_status
     def getBrokerId(self): # obtienes el id del broker, solo hay 1 y 2
         return self.broker_id
     def getTopics(self): # funcion que devuelve el diccionario de topics, IMPORTANTE 
@@ -65,8 +65,7 @@ class Producer(Client):
     
 class Consumer(Client):
     def __init__(self,client_id = 0,consuming_status = False, topic_id = 1, broker_id = 1):
-        super().__init__(self,client_id)
-        self.listOfBrokers = {1: Broker(broker_id = 1), 2: Broker(broker_id = 2)}
+        super().__init__()
         self.consuming_status = consuming_status
         self.topic_id = topic_id
         self.broker_id = broker_id
