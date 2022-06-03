@@ -7,7 +7,7 @@
 from ast import Try
 import zmq
 import sys
-sys.path.insert(0,'C:/Users/PC/Desktop/8voSemestre/Sistemas distribuidos/ProyectoFinal_Kafka\src/tools')
+sys.path.insert(0,'/home/alejandro/Sistemas_distribuidos/ProyectoFinal_Kafka/src/tools')
 from ProducerConsumer import *
 
 brokers = {

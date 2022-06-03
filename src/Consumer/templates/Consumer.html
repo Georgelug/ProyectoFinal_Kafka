@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Consumer</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/Consumidor.png') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.6.1-dist/css/bootstrap.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.6.0.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/popper.js') }}" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='bootstrap-4.6.1-dist/js/bootstrap.js') }}"></script>
+        
+    </head>
+    <body style="background-color: #ADD8E6;">
+        <div class="container" style="margin-top: 25px;">
+            <h1 class="row justify-content-center">Topicos disponibles en los brokers</h1>
+        </div>
+        <br>
+        <div class="container">
+            {% include "Buttons.html"%}
+        </div>
+    </body>
+</html>
