@@ -8,7 +8,7 @@ import zmq
 import sys
 from time import sleep
 from flask import jsonify
-sys.path.insert(0,'C:/Users/PC/Desktop/8voSemestre/Sistemas distribuidos/ProyectoFinal_Kafka\src/tools')
+sys.path.insert(0,'/home/alejandro/Sistemas_distribuidos/ProyectoFinal_Kafka/src/tools')
 from ProducerConsumer import *
 
 context = zmq.Context()
@@ -17,8 +17,6 @@ b1 = Broker()
 print("Connecting to the brokers …")
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://127.0.0.1:5555")
-
-
 
 sleep(1)
 socket.send_pyobj({'mode':'publish','message':('hello world','message 1')}) # se manda un diccionario donde se tiene el modo publish y el topic junto con un mensaje
